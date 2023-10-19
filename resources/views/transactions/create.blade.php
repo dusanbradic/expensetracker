@@ -43,7 +43,7 @@
         
 
         <!-- novi -->
-        <h3 class="col-span-2 mb-5 text-lg font-medium text-center text-gray-900 dark:text-white">Transaction type</h3>
+        <!-- <h3 class="col-span-2 mb-5 text-lg font-medium text-center text-gray-900 dark:text-white">Transaction type</h3>
         <div class="col-span-2 border p-5 hover:font-bold">
             <input id="income" type="radio" value="1" name="is_income" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
             <label for="income" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
@@ -55,7 +55,7 @@
             <label for="expense" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                 <div class="radio-label">Expense</div>
             </label>
-        </div>
+        </div> -->
     </div>
 
 </form>

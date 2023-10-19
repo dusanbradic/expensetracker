@@ -17,8 +17,8 @@
       <p>{{ $total_expense }} RSD</p>
     </a>  
   </div>
-  <div class="col-span-2 border hover:font-bold">
-    <button class="p-5"><a href="{{ route('transactions.create') }}">Add transaction</a></button>
+  <div class="col-span-2 border p-5 hover:font-bold">
+    <a href="{{ route('transactions.create') }}"><div>Add tranasction</div></a>
   </div>
 </div>
 
