@@ -49,7 +49,16 @@
       <tr>
           <td>@if ($transaction->is_income == 1){{'+'}}{{ $transaction->amount}}@else{{'-'}}{{ $transaction->amount}}@endif</td>
           <td>{{ $transaction->category }}</td>
-          <td>@if ($transaction->is_income == 1){{'income'}}@else{{'expense'}}@endif</td>
+          @if ($transaction->is_income == 1)
+            <td class="rounded-md bg-green-50 px-2 py-1 text-green-700 ring-1 ring-inset ring-green-600/20">
+              income
+            </td>
+          @else
+            <td class="rounded-md bg-red-50 px-2 py-1 text-red-700 ring-1 ring-inset ring-red-600/10">
+              expense
+            </td>
+          @endif
+          <!-- <td >@if ($transaction->is_income == 1){{'income'}}@else{{'expense'}}@endif</td> -->
           <td>{{ $transaction->created_at->format('d. M Y') }}</td>
           <!-- <td><button class="border"><a href="{{ route ('transactions.edit', $transaction) }}" >Edit</a></button></td> -->
 
