@@ -28,7 +28,7 @@ class TransactionController extends Controller
         $end_date = $request->end_date;
 
         $transactions = Transaction::whereDate('created_at', '>=', $start_date)
-        ->whereDate('created_at', '<=', $end_date);
+        ->whereDate('created_at', '<=', $end_date)->get();
 
         // $transactions = Transaction::all()->sortByDesc('created_at');
         $total_income = Transaction::where('is_income', 1)->sum('amount');
