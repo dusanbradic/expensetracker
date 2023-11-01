@@ -17,23 +17,25 @@
       <p>{{ $total_expense }} RSD</p>
     </a>  
   </div>
-  <div class="col-span-2 border hover:font-bold">
-    <button class="p-5"><a href="{{ route('transactions.create') }}">Add transaction</a></button>
+  <div class="col-span-2 border p-5 hover:font-bold">
+    <a href="{{ route('transactions.create') }}"><div>Add tranasction</div></a>
   </div>
+  <form class="col-span-2 border p-5" action="/filter" method="GET">
+  <label>Start Date:</label>
+  <input type="date" name="start_date">
+
+  <label>End Date:</label>
+  <input type="date" name="end_date">
+
+  <button type="submit">Filter</button>
+</form>
 </div>
+
 
 <div class="grid grid-cols-1">
 @if (!empty($transactions))
 <!-- <p>{{$transactions}}</p> -->
-
-
 <h2>Recent tranasctions</h2>
-
-<label>Start Date:</label>
-<input type="date" placeholder=" "name="date" id="date">
-
-<label>End Date:</label>
-<input type="date" name="date" id="date">
 
 <table class="table-auto border text-center">
   <thead>
