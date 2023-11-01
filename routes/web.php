@@ -20,6 +20,7 @@ use App\Http\Controllers\TransactionController;
 
 Route::controller(TransactionController::class)->group(function () {
     Route::get('/', 'index')->name('transactions.index');
+    Route::get('/filter', 'filter')->name('transactions.filter');
     Route::get('/transactions/income', 'show_income')->name('transactions.show_income');
     Route::get('/transactions/expense', 'show_expense')->name('transactions.show_expense');
     // Route::get('/transactions/{id}', 'show')->name('transactions.show);
