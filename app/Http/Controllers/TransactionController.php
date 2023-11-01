@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaction;
-use Illuminate\Contracts\Session\Session;
+// use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
@@ -28,9 +28,13 @@ class TransactionController extends Controller
         $end_date = $request->end_date;
 
         $transactions = Transaction::whereDate('created_at', '>=', $start_date)
-                                    ->whereDate('created_at', '<=', $end_date)
-                                    ->get();
-        return view('transactions.index', compact('transactions'));
+        ->whereDate('created_at', '<=', $end_date);
+
+        // $transactions = Transaction::all()->sortByDesc('created_at');
+        $total_income = Transaction::where('is_income', 1)->sum('amount');
+        $total_expense = Transaction::where('is_income', 0)->sum('amount');
+        $balance = floatval($total_income - $total_expense);
+        return view('transactions.index', compact('transactions', 'total_income','total_expense','balance'));
     }
 
     /**
