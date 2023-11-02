@@ -22,10 +22,10 @@
   </div>
   <form class="col-span-2 border p-5" action="/filter" method="GET">
   <label>Start Date:</label>
-  <input type="date" name="start_date">
+  <input type="date" name="start_date" required>
 
   <label>End Date:</label>
-  <input type="date" name="end_date">
+  <input type="date" name="end_date" required>
 
   <button type="submit">Filter</button>
 </form>
