@@ -27,12 +27,13 @@ class TransactionController extends Controller
         $start_date = $request->start_date;
         $end_date = $request->end_date;
 
-        $transactions = Transaction::whereDate('created_at', '>=', $start_date)
-        ->whereDate('created_at', '<=', $end_date)->get();
+        // $transactions = Transaction::whereDate('created_at', '>=', $start_date)
+        // ->whereDate('created_at', '<=', $end_date)->get();
 
         // $transactions = Transaction::all()->sortByDesc('created_at');
-        $total_income = Transaction::where('is_income', 1)->sum('amount');
-        $total_expense = Transaction::where('is_income', 0)->sum('amount');
+        $transactions = Transaction::inDateRange($start_date, $end_date)->get();
+        $total_income = Transaction::inDateRange($start_date, $end_date)->isIncome()->sum('amount');
+        $total_expense = Transaction::inDateRange($start_date, $end_date)->isExpense()->sum('amount');
         $balance = floatval($total_income - $total_expense);
         return view('transactions.index', compact('transactions', 'total_income','total_expense','balance'));
     }
@@ -93,7 +94,7 @@ class TransactionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-     public function update(Request $request, Transaction $transaction)
+    public function update(Request $request, Transaction $transaction)
     {
         //fix this one  
         $rules = array(
