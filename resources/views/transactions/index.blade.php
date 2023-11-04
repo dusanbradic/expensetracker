@@ -20,15 +20,16 @@
   <div class="col-span-2 border p-5 hover:font-bold">
     <a href="{{ route('transactions.create') }}"><div>Add tranasction</div></a>
   </div>
+  <!-- FORMS  -->
   <form class="col-span-2 border p-5" action="/filter" method="GET">
-  <label>Start Date:</label>
-  <input type="date" name="start_date" required>
+    <label>Start Date:</label>
+    <input type="date" name="start_date" required>
 
-  <label>End Date:</label>
-  <input type="date" name="end_date" required>
+    <label>End Date:</label>
+    <input type="date" name="end_date" value="<?php echo date("m/d/Y");?>" required>
 
-  <button type="submit">Filter</button>
-</form>
+    <button type="submit">Filter</button>
+  </form>
 </div>
 
 
@@ -97,7 +98,9 @@
       </tr>
     @endforeach
   </tbody>
-</table>  
+</table>
+{{ $transactions->links() }}
+
 @else
   <h2 class="text-center m-2"><strong>No Transcations Yet!</strong></h2>
 @endif

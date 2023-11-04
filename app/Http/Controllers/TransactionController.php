@@ -15,7 +15,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $transactions = Transaction::all()->sortByDesc('created_at');
+        $transactions = Transaction::orderBy('created_at', 'desc')->paginate(10);
         $total_income = Transaction::where('is_income', 1)->sum('amount');
         $total_expense = Transaction::where('is_income', 0)->sum('amount');
         $balance = floatval($total_income - $total_expense);
