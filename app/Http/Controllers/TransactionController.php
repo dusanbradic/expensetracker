@@ -35,6 +35,7 @@ class TransactionController extends Controller
         $total_income = Transaction::inDateRange($start_date, $end_date)->isIncome()->sum('amount');
         $total_expense = Transaction::inDateRange($start_date, $end_date)->isExpense()->sum('amount');
         $balance = floatval($total_income - $total_expense);
+
         return view('transactions.index', compact('transactions', 'total_income','total_expense','balance'));
     }
 
@@ -75,14 +76,14 @@ class TransactionController extends Controller
      */
     public function show_expense()
     {
-        $expense_transactions = Transaction::where('is_income', 0)->get();
-        return view('transactions/expense', compact('expense_transactions'));
+        $transactions = Transaction::where('is_income', 0)->paginate(10);
+        return view('transactions/expense', compact('transactions'));
     }
 
     public function show_income()
     {
-        $income_transactions = Transaction::where('is_income', 1)->get();
-        return view('transactions/income', compact('income_transactions'));
+        $transactions = Transaction::where('is_income', 1)->paginate(10);
+        return view('transactions/income', compact('transactions'));
     }
     /**
      * Show the form for editing the specified resource.
