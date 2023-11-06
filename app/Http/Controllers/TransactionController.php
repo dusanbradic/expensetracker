@@ -24,7 +24,7 @@ class TransactionController extends Controller
     }
 
     public function filter(Request $request){
-        
+
         $start_date = $request->start_date;
         $end_date = $request->end_date;
 
@@ -63,7 +63,7 @@ class TransactionController extends Controller
         $validator = Validator::make($request->all(), $rules);
 
         if ($validator->fails()) {
-            return Redirect::to('transactions/create')
+            return Redirect::to('transactions.create')
                 ->withErrors($validator)
                 ->withInput();
         } else {
