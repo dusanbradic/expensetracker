@@ -24,6 +24,7 @@ class TransactionController extends Controller
     }
 
     public function filter(Request $request){
+        
         $start_date = $request->start_date;
         $end_date = $request->end_date;
 
@@ -31,9 +32,10 @@ class TransactionController extends Controller
         // ->whereDate('created_at', '<=', $end_date)->get();
 
         // $transactions = Transaction::all()->sortByDesc('created_at');
-        $transactions = Transaction::inDateRange($start_date, $end_date)->orderBy('created_at', 'desc')->get();
+        $transactions = Transaction::inDateRange($start_date, $end_date)->orderBy('created_at', 'desc')->paginate(10);
         $total_income = Transaction::inDateRange($start_date, $end_date)->isIncome()->sum('amount');
         $total_expense = Transaction::inDateRange($start_date, $end_date)->isExpense()->sum('amount');
+
         $balance = floatval($total_income - $total_expense);
 
         return view('transactions.index', compact('transactions', 'total_income','total_expense','balance'));
