@@ -23,10 +23,10 @@
   <!-- FORMS  -->
   <form class="col-span-2 border p-5" action="/filter" method="GET">
     <label>Start Date:</label>
-    <input type="date" name="start_date" required>
+    <input type="date" name="start_date" value="<?php echo date('Y-m-d', strtotime('-30 days'));?>" required>
 
     <label>End Date:</label>
-    <input type="date" name="end_date" value="<?php echo date("m/d/Y");?>" required>
+    <input type="date" name="end_date" value="<?php echo date('Y-m-d');?>" required>
 
     <button type="submit">Filter</button>
   </form>
@@ -94,39 +94,3 @@
 @endif
 </div>
 @endsection
-
-
-
-
-<!-- top part worse try-->
-<!-- 
-<div class="grid grid-cols-1 text-center">
-  <div class="columnn-1 border">
-    <p  class="p-2">BALANCE </p>
-    <p class="p-2">{{ $total_income - $total_expense }} RSD</p>
-  </div>
-</div>
-<div class="grid grid-cols-2 text-center">
-  <div class="column-1 border ">
-    <h3 class="p-2">TOTAL INCOME</h3>
-    <span class="p-2">{{ $total_income }} RSD</span>
-  </div>
-  <div class="column-1 border">
-    <h3 class="p-2">TOTAL EXPENSE</h3>
-    <span class="p-2">{{ $total_expense }} RSD</span>
-  </div>
-</div>
-<div class="grid grid-cols-1">
-  <button class="border p-5"><a href="{{ route('transactions.create') }}">Add transaction</a></button>
-</div>
- -->
-
-
-
-
-                 <!-- <span style="display: inline-flex; align-items: center;">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m0 0l6.75-6.75M12 19.5l-6.75-6.75" />
-                  </svg>
-                  Edit
-                </span> -->
